@@ -1,5 +1,11 @@
-https://stackabuse.com/monitoring-spring-boot-apps-with-micrometer-prometheus-and-grafana/
+##Installation
+  Install following Docker images. 
+   
+  ./prometheus
+  ./grafana
+  ./jaeger
 
+  To integrate Dockerized apps refer to - install.pdf(https://stackabuse.com/monitoring-spring-boot-apps-with-micrometer-prometheus-and-grafana/)
 
 ##Application:
 
@@ -11,7 +17,7 @@ https://stackabuse.com/monitoring-spring-boot-apps-with-micrometer-prometheus-an
 ##Actuator/Metrics:
 http://localhost:8080/actuator
 
-##Prometheous:
+##Prometheus:
 http://localhost:9090/
 
 ##Grafana:
