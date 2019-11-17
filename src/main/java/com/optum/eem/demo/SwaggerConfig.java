@@ -36,7 +36,7 @@ public class SwaggerConfig extends WebMvcConfigurationSupport {
     private ApiInfo apiInfo() {
         return new ApiInfo(
                 "Eem Api",
-                "API for demonstrating REST traced with Jaeger.",
+                "RESTful Swagger API for with Prometheus Metrics and Jaeger tracing!!!",
                 "1.0",
                 "",
                 new Contact("Supraja Doma", "http://www.optum.com", "supraja.doma@optum.com"),

@@ -2,7 +2,11 @@ https://stackabuse.com/monitoring-spring-boot-apps-with-micrometer-prometheus-an
 
 
 ##Application:
-http://localhost:8080/api/tutorial/1.0/employees
+
+  http://localhost:8080/api/tutorial/1.0/employees
+
+  ### Swagger-UI
+  http://localhost:8080/swagger-ui.html
 
 ##Actuator/Metrics:
 http://localhost:8080/actuator
