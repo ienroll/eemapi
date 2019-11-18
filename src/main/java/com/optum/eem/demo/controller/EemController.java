@@ -1,19 +1,23 @@
 package com.optum.eem.demo.controller;
 
+import com.google.common.collect.ImmutableMap;
 import com.optum.eem.demo.model.Employee;
 import com.optum.eem.demo.service.EmployeeService;
-import com.google.common.collect.ImmutableMap;
 import io.opentracing.Span;
 import io.opentracing.Tracer;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import java.util.Collection;
+import java.util.NoSuchElementException;
+import javax.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.Collection;
-import java.util.NoSuchElementException;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
 @RestController
@@ -28,6 +32,7 @@ public class EemController {
         this.employeeService = employeeService;
     }
 
+    @PostConstruct
     public void init() {
         // Add some employees
         employeeService.addEmployee(Employee.builder()
