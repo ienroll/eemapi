@@ -4,6 +4,8 @@
   ./prometheus
   ./grafana
   ./jaeger
+  ./node-exporter
+  ./alertmanager
 
   To integrate Dockerized apps refer to - install.pdf(https://stackabuse.com/monitoring-spring-boot-apps-with-micrometer-prometheus-and-grafana/)
 
