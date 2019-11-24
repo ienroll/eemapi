@@ -22,3 +22,44 @@ View active alerts
     Alertname  Starts At                Summary
     RedisDown  2018-03-04 22:23:25 UTC  Redis Availability alert.
 
+
+# Alert manager configuration
+
+https://prometheus.io/docs/alerting/configuration/#%3Croute%3E
+
+# webhook_config for alertmanager-webhook-servicenow
+
+The webhook receiver allows configuring a generic receiver.
+
+## Whether or not to notify about resolved alerts.
+` [ send_resolved: <boolean> | default = true ] `
+
+## The endpoint to send HTTP POST requests to.
+`url: <string>`
+
+## The HTTP client's configuration.
+  [ http_config: <http_config> | default = global.http_config ]
+  The Alertmanager will send HTTP POST requests in the following JSON format to the configured endpoint:
+  
+  {
+    "version": "4",
+    "groupKey": <string>,    // key identifying the group of alerts (e.g. to deduplicate)
+    "status": "<resolved|firing>",
+    "receiver": <string>,
+    "groupLabels": <object>,
+    "commonLabels": <object>,
+    "commonAnnotations": <object>,
+    "externalURL": <string>,  // backlink to the Alertmanager.
+    "alerts": [
+      {
+        "status": "<resolved|firing>",
+        "labels": <object>,
+        "annotations": <object>,
+        "startsAt": "<rfc3339>",
+        "endsAt": "<rfc3339>",
+        "generatorURL": <string> // identifies the entity that caused the alert
+      },
+      ...
+    ]
+  }
+  There is a list of integrations with this feature - https://prometheus.io/docs/operating/integrations/#alertmanager-webhook-receiver
