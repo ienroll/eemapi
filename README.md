@@ -46,3 +46,5 @@ http://localhost:3000/
 ##Jaegar (https://www.scalyr.com/blog/jaeger-tracing-tutorial/):
 http://localhost:16686/
 
+#Alertmanager
+http://localhost:9093
