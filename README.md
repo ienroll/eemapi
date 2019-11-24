@@ -15,6 +15,17 @@
   https://dev73294.service-now.com/nav_to.do?uri=%2Fhome.do%3F
   Username: admin
   Password: Eemapi123
+  
+   Ex: 
+   `GET :`
+      https://dev73294.service-now.com/api/now/v1/table/incident?sysparm_query=number=INC0000015  
+`   POST:`
+      curl "https://dev73294.service-now.com/api/now/table/incident" \
+      --request POST \
+      --header "Accept:application/json" \
+      --header "Content-Type:application/json" \
+      --data "{}" \
+      --user 'user':'password'
 
 ##Application:
 
