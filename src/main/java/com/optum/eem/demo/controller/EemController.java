@@ -68,7 +68,6 @@ public class EemController {
 
     } catch (NumberFormatException | NoSuchElementException nfe) {
       log.error("Error getting employee: ", nfe);
-      throw new NoSuchElementException(nfe.getMessage());
     } finally {
       span.finish();
     }

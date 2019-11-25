@@ -1,4 +1,4 @@
-package com.optum.eem.demo.api;
+package com.optum.eem.demo.config;
 
 import static com.google.common.collect.Lists.newArrayList;
 

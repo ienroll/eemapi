@@ -1,11 +1,13 @@
 package com.optum.eem.demo;
 
+import com.optum.eem.demo.config.DatabaseConfig;
 import com.optum.eem.demo.model.Employee;
 import com.optum.eem.demo.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
 @Slf4j
@@ -13,11 +15,15 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class EemApiTestDataInitializer implements ApplicationListener<ApplicationReadyEvent> {
 
+  private final Environment env;
+  private final DatabaseConfig databaseConfig;
+
   private final EmployeeService employeeService;
 
   @Override
   public void onApplicationEvent(final ApplicationReadyEvent event) {
-    log.info("Loading test data for Eem Api Application...");
+    log.info("Loading test data for Eem Api Application: {}", env.getProperty("database.name"));
+    log.info("Database properties: {}", databaseConfig.toString());
 
     // Add some employees
     employeeService.addEmployee(
