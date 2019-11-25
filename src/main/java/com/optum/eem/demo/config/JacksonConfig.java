@@ -14,11 +14,20 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 
 @Configuration
-public class DateFormatConfig {
+public class JacksonConfig {
 
   private static final String dateFormat = "yyyy-MM-dd";
-
   private static final String dateTimeFormat = "yyyy-MM-dd HH:mm:ss";
+
+
+  @Bean
+  @Primary
+  public ObjectMapper objectMapper(Jackson2ObjectMapperBuilder builder) {
+    ObjectMapper objectMapper = builder.build();
+    objectMapper.registerModule(new JavaTimeModule());
+    objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
+    return objectMapper;
+  }
 
   @Bean
   @ConditionalOnProperty(
@@ -31,14 +40,5 @@ public class DateFormatConfig {
       builder.serializers(new LocalDateSerializer(DateTimeFormatter.ofPattern(dateFormat)));
       builder.serializers(new LocalDateTimeSerializer(DateTimeFormatter.ofPattern(dateTimeFormat)));
     };
-  }
-
-  @Bean
-  @Primary
-  public ObjectMapper objectMapper(Jackson2ObjectMapperBuilder builder) {
-    ObjectMapper objectMapper = builder.build();
-    objectMapper.registerModule(new JavaTimeModule());
-    objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
-    return objectMapper;
   }
 }
