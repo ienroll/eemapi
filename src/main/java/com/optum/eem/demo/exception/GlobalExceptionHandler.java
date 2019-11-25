@@ -1,5 +1,6 @@
 package com.optum.eem.demo.exception;
 
+import java.util.NoSuchElementException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -15,14 +16,14 @@ public class GlobalExceptionHandler {
         request.getSessionId() + ex.getMessage(), HttpStatus.NOT_IMPLEMENTED);
   }
 
-  @ExceptionHandler(IllegalArgumentException.class)
+  @ExceptionHandler(NoSuchElementException.class)
   public ResponseEntity<?> resourceNotFoundException(
-      IllegalArgumentException ex, WebRequest request) {
+      NoSuchElementException ex, WebRequest request) {
     return new ResponseEntity<>(request.getSessionId() + ex.getMessage(), HttpStatus.BAD_REQUEST);
   }
 
   @ExceptionHandler(Exception.class)
-  public ResponseEntity<?> globleExcpetionHandler(Exception ex, WebRequest request) {
+  public ResponseEntity<?> globalExceptionHandler(Exception ex, WebRequest request) {
     return new ResponseEntity<>(
         request.getSessionId() + ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
   }

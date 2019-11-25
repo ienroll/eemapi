@@ -68,8 +68,10 @@ public class EemController {
 
     } catch (NumberFormatException | NoSuchElementException nfe) {
       log.error("Error getting employee: ", nfe);
+      throw new NoSuchElementException(nfe.getMessage());
+    } finally {
+      span.finish();
     }
-    span.finish();
     return new ResponseEntity<>(employee, status);
   }
 
@@ -103,9 +105,10 @@ public class EemController {
         status = HttpStatus.OK;
       }
     } catch (NumberFormatException | NoSuchElementException nfe) {
-      // Fall through
+      status = HttpStatus.BAD_REQUEST;
+    } finally {
+      span.finish();
     }
-    span.finish();
     return new ResponseEntity(null, status);
   }
 
@@ -126,10 +129,11 @@ public class EemController {
         return new ResponseEntity(null, HttpStatus.OK);
       }
     } catch (NumberFormatException | NoSuchElementException nfe) {
-      // Fall through
+      status = HttpStatus.BAD_REQUEST;
+    } finally {
+      span.finish();
     }
 
-    span.finish();
     return new ResponseEntity(null, status);
   }
 
@@ -147,18 +151,19 @@ public class EemController {
       span.log(ImmutableMap.of("event", "delete-request", "value", idString));
       if (employeeService.deleteEmployee(id, span)) {
         span.log(ImmutableMap.of("event", "delete-success", "value", idString));
-        span.setTag("http.status_code", 200);
+        span.setTag("http.status_code", HttpStatus.OK.value());
         status = HttpStatus.OK;
       } else {
         span.log(ImmutableMap.of("event", "delete-fail", "value", "does not exist"));
-        span.setTag("http.status_code", 204);
+        span.setTag("http.status_code", HttpStatus.NO_CONTENT.value());
       }
     } catch (NumberFormatException | NoSuchElementException nfe) {
       span.log(ImmutableMap.of("event", "delete-fail", "value", idString));
-      span.setTag("http.status_code", 204);
+      span.setTag("http.status_code", HttpStatus.NO_CONTENT.value());
+    } finally {
+      span.finish();
     }
 
-    span.finish();
     return new ResponseEntity(null, status);
   }
 }
