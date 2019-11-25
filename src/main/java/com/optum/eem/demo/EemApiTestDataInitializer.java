@@ -47,5 +47,4 @@ public class EemApiTestDataInitializer implements ApplicationListener<Applicatio
             .phone("555-1213")
             .build());
   }
-
 }

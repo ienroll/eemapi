@@ -5,8 +5,6 @@ import com.optum.eem.demo.repo.EmployeeRepository;
 import io.opentracing.Span;
 import io.opentracing.Tracer;
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

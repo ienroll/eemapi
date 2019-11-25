@@ -52,8 +52,8 @@ public class CustomRestEntityExceptionHandler extends ResponseEntityExceptionHan
     return handleException(ex, headers, request, bindingResult);
   }
 
-  private ResponseEntity<Object> handleException(Exception ex,
-      HttpHeaders headers, WebRequest request, BindingResult bindingResult) {
+  private ResponseEntity<Object> handleException(
+      Exception ex, HttpHeaders headers, WebRequest request, BindingResult bindingResult) {
     logger.info(ex.getClass().getName());
     final List<String> errors = new ArrayList<>();
     for (final FieldError error : bindingResult.getFieldErrors()) {

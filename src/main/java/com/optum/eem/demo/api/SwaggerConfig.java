@@ -1,7 +1,6 @@
 package com.optum.eem.demo.api;
 
 import static com.google.common.collect.Lists.newArrayList;
-import static java.util.Collections.emptyList;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
@@ -48,7 +47,8 @@ public class SwaggerConfig extends WebMvcConfigurationSupport {
   private ApiInfo apiInfo() {
     return new ApiInfoBuilder()
         .title("Eem REST API")
-        .description("Employee Management Swagger REST API with Prometheus Metrics and Jaeger tracing!!!")
+        .description(
+            "Employee Management Swagger REST API with Prometheus Metrics and Jaeger tracing!!!")
         .contact(new Contact("Supraja Doma", "http://www.optum.com", "supraja.doma@optum.com"))
         .license("Optum 2020 :-) ")
         .licenseUrl("")
