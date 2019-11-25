@@ -1,4 +1,4 @@
-package com.optum.eem.demo;
+package com.optum.eem.demo.api;
 
 import static com.google.common.collect.Lists.newArrayList;
 import static java.util.Collections.emptyList;
@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
+import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.builders.ResponseMessageBuilder;
@@ -28,8 +29,8 @@ public class SwaggerConfig extends WebMvcConfigurationSupport {
   public Docket api() {
     return new Docket(DocumentationType.SWAGGER_2)
         .select()
-        .apis(RequestHandlerSelectors.basePackage("com.optum.eem"))
-        .paths(PathSelectors.any()) // PathSelectors.ant("/foos/*")
+        .apis(RequestHandlerSelectors.basePackage("com.optum.eem.demo.controller"))
+        .paths(PathSelectors.any()) // PathSelectors.ant("/foos/*") or PathSelectors.regex("/.*")
         .build()
         .apiInfo(apiInfo())
         .useDefaultResponseMessages(false)
@@ -41,19 +42,18 @@ public class SwaggerConfig extends WebMvcConfigurationSupport {
                     .message("500 message")
                     .responseModel(new ModelRef("Error"))
                     .build(),
-                new ResponseMessageBuilder().code(403).message("Forbidden!!!!!").build()));
+                new ResponseMessageBuilder().code(403).message("Forbidden!").build()));
   }
 
   private ApiInfo apiInfo() {
-    return new ApiInfo(
-        "Eem Api",
-        "RESTful Swagger API for with Prometheus Metrics and Jaeger tracing!!!",
-        "1.0",
-        "",
-        new Contact("Supraja Doma", "http://www.optum.com", "supraja.doma@optum.com"),
-        "",
-        "",
-        emptyList());
+    return new ApiInfoBuilder()
+        .title("Eem REST API")
+        .description("Employee Management Swagger REST API with Prometheus Metrics and Jaeger tracing!!!")
+        .contact(new Contact("Supraja Doma", "http://www.optum.com", "supraja.doma@optum.com"))
+        .license("Optum 2020 :-) ")
+        .licenseUrl("")
+        .version("1.0.0")
+        .build();
   }
 
   @Override

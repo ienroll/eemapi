@@ -10,6 +10,7 @@ import io.swagger.annotations.ApiOperation;
 import java.util.Collection;
 import java.util.NoSuchElementException;
 import javax.annotation.PostConstruct;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,46 +23,11 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 @RestController
 @Api(value = "eemapi")
+@RequiredArgsConstructor
 public class EemController {
 
-  private EmployeeService employeeService;
-  private Tracer tracer;
-
-  public EemController(Tracer tracer, EmployeeService employeeService) {
-    this.tracer = tracer;
-    this.employeeService = employeeService;
-  }
-
-  @PostConstruct
-  public void init() {
-    // Add some employees
-    employeeService.addEmployee(
-        Employee.builder()
-            .employeeId(1)
-            .email("john@doe.com")
-            .firstName("John")
-            .lastName("Doe")
-            .phone("555-1212")
-            .build());
-
-    employeeService.addEmployee(
-        Employee.builder()
-            .employeeId(2)
-            .email("jenny@doe.com")
-            .firstName("Jenny")
-            .lastName("Doe")
-            .phone("867-5309")
-            .build());
-
-    employeeService.addEmployee(
-        Employee.builder()
-            .employeeId(3)
-            .email("clark@doe.com")
-            .firstName("Clark")
-            .lastName("Kent")
-            .phone("555-1213")
-            .build());
-  }
+  private final EmployeeService employeeService;
+  private final Tracer tracer;
 
   @ApiOperation(value = "Create Employee ", response = ResponseEntity.class)
   @RequestMapping(value = "/api/tutorial/1.0/employees", method = RequestMethod.POST)

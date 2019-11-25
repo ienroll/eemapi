@@ -28,12 +28,6 @@
       --data "{}" \
       --user 'user':'password'
 
-##Application:
-
-  http://localhost:8080/api/tutorial/1.0/employees
-
-  ### Swagger-UI
-  http://localhost:8080/swagger-ui.html
 
 ##Actuator/Metrics:
 http://localhost:8080/actuator
@@ -47,5 +41,12 @@ http://localhost:3000/
 ##Jaegar (https://www.scalyr.com/blog/jaeger-tracing-tutorial/):
 http://localhost:16686/
 
-#Alertmanager
+##Alertmanager
 http://localhost:9093
+
+## Swagger-UI
+http://localhost:8080/swagger-ui.html
+  
+## Application REST endpoints:
+http://localhost:8080/api/tutorial/1.0/employees
+
