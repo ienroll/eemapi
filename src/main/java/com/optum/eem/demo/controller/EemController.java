@@ -6,6 +6,7 @@ import com.optum.eem.demo.service.EmployeeService;
 import io.opentracing.Span;
 import io.opentracing.Tracer;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import java.util.Collection;
 import java.util.NoSuchElementException;
@@ -93,6 +94,11 @@ public class EemController {
   }
 
   @ApiOperation(value = "Update Employee ", response = ResponseEntity.class)
+  @ApiImplicitParam(
+      name = "employee",
+      value = "Employee entity",
+      required = true,
+      dataType = "Employee")
   @PutMapping(value = "/1.0/employees/{id}")
   public ResponseEntity updateEmployee(
       @PathVariable("id") String idString, @RequestBody Employee employee) {

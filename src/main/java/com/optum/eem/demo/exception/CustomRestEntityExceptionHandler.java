@@ -8,6 +8,7 @@ import org.springframework.beans.TypeMismatchException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -38,6 +39,17 @@ public class CustomRestEntityExceptionHandler extends ResponseEntityExceptionHan
     BindingResult bindingResult = ex.getBindingResult();
 
     return handleException(ex, headers, request, bindingResult);
+  }
+
+  @Override
+  protected ResponseEntity<Object> handleHttpMessageNotReadable(
+      HttpMessageNotReadableException ex,
+      HttpHeaders headers,
+      HttpStatus status,
+      WebRequest request) {
+    final String error = " Invalid input";
+    final ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, ex.getLocalizedMessage(), error);
+    return new ResponseEntity<>(apiError, new HttpHeaders(), apiError.getStatus());
   }
 
   @Override

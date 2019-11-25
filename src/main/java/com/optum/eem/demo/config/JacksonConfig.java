@@ -28,7 +28,7 @@ public class JacksonConfig {
   public ObjectMapper objectMapper(Jackson2ObjectMapperBuilder builder) {
     ObjectMapper objectMapper = builder.build();
     objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
-    objectMapper.setSerializationInclusion(Include.NON_NULL); //delete fields with null values
+    objectMapper.setSerializationInclusion(Include.NON_NULL); // delete fields with null values
     objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
     return objectMapper;
   }
@@ -60,12 +60,14 @@ public class JacksonConfig {
     ObjectMapper objectMapper = new ObjectMapper();
 
     JavaTimeModule javaTimeModule = new JavaTimeModule();
-    javaTimeModule.addSerializer(LocalDate.class, new LocalDateSerializer(DateTimeFormatter.ofPattern(dateFormat)));
-    javaTimeModule.addDeserializer(LocalDate.class, new LocalDateDeserializer(DateTimeFormatter.ofPattern(dateFormat)));
+    javaTimeModule.addSerializer(
+        LocalDate.class, new LocalDateSerializer(DateTimeFormatter.ofPattern(dateFormat)));
+    javaTimeModule.addDeserializer(
+        LocalDate.class, new LocalDateDeserializer(DateTimeFormatter.ofPattern(dateFormat)));
 
     objectMapper.registerModule(javaTimeModule);
     objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
-    objectMapper.setSerializationInclusion(Include.NON_NULL); //delete fields with null values
+    objectMapper.setSerializationInclusion(Include.NON_NULL); // delete fields with null values
     objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
 
     return objectMapper;

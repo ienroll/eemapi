@@ -1,11 +1,15 @@
 package com.optum.eem.demo.config;
 
 import static com.google.common.collect.Lists.newArrayList;
+import static springfox.documentation.schema.AlternateTypeRules.newRule;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -27,8 +31,13 @@ public class SwaggerConfig extends WebMvcConfigurationSupport {
   @Bean
   public Docket api() {
     return new Docket(DocumentationType.SWAGGER_2)
+        .alternateTypeRules( // to resolve swagger api type reference
+            newRule(LocalDate.class, java.sql.Date.class),
+            newRule(LocalDateTime.class, java.util.Date.class))
+        .directModelSubstitute(LocalDate.class, java.sql.Date.class)
+        .directModelSubstitute(LocalDateTime.class, java.util.Date.class)
         .select()
-        .apis(RequestHandlerSelectors.basePackage("com.optum.eem.demo.controller"))
+        .apis(RequestHandlerSelectors.withClassAnnotation(RestController.class))
         .paths(PathSelectors.any()) // PathSelectors.ant("/foos/*") or PathSelectors.regex("/.*")
         .build()
         .apiInfo(apiInfo())
@@ -39,7 +48,7 @@ public class SwaggerConfig extends WebMvcConfigurationSupport {
                 new ResponseMessageBuilder()
                     .code(500)
                     .message("500 message")
-                    .responseModel(new ModelRef("ApiError"))
+                    .responseModel(new ModelRef("string"))
                     .build(),
                 new ResponseMessageBuilder().code(403).message("Forbidden!").build()));
   }
