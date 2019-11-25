@@ -2,7 +2,6 @@ package com.optum.eem.demo.exception;
 
 import java.util.Arrays;
 import java.util.List;
-
 import org.springframework.http.HttpStatus;
 
 public class ApiError {
@@ -60,5 +59,4 @@ public class ApiError {
   public void setError(final String error) {
     errors = Arrays.asList(error);
   }
-
 }

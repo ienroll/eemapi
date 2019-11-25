@@ -11,16 +11,21 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class EemApiApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(EemApiApplication.class, args);
-        log.info("EemApiApplication started");
-    }
+  public static void main(String[] args) {
+    SpringApplication.run(EemApiApplication.class, args);
+    log.info("EemApiApplication started");
+  }
 
-    @Bean
-    public static JaegerTracer getTracer() {
-        Configuration.SamplerConfiguration samplerConfig = Configuration.SamplerConfiguration.fromEnv().withType("const").withParam(1);
-        Configuration.ReporterConfiguration reporterConfig = Configuration.ReporterConfiguration.fromEnv().withLogSpans(true);
-        Configuration config = new Configuration("Eem Api Application").withSampler(samplerConfig).withReporter(reporterConfig);
-        return config.getTracer();
-    }
+  @Bean
+  public static JaegerTracer getTracer() {
+    Configuration.SamplerConfiguration samplerConfig =
+        Configuration.SamplerConfiguration.fromEnv().withType("const").withParam(1);
+    Configuration.ReporterConfiguration reporterConfig =
+        Configuration.ReporterConfiguration.fromEnv().withLogSpans(true);
+    Configuration config =
+        new Configuration("Eem Api Application")
+            .withSampler(samplerConfig)
+            .withReporter(reporterConfig);
+    return config.getTracer();
+  }
 }

@@ -18,7 +18,8 @@
   
    Ex: 
    `GET :`
-      https://dev73294.service-now.com/api/now/v1/table/incident?sysparm_query=number=INC0000015  
+      https://dev73294.service-now.com/api/now/v1/table/incident?sysparm_query=number=INC0000015
+      https://dev73294.service-now.com/api/now/v1/table/incident?sysparm_query=assignment_group=1925d04d41e456c3c337ff6896e7fdae  
 `   POST:`
       curl "https://dev73294.service-now.com/api/now/table/incident" \
       --request POST \
