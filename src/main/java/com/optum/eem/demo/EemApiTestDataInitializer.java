@@ -3,6 +3,7 @@ package com.optum.eem.demo;
 import com.optum.eem.demo.config.DatabaseConfig;
 import com.optum.eem.demo.model.Employee;
 import com.optum.eem.demo.service.EmployeeService;
+import java.time.LocalDateTime;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
@@ -33,6 +34,8 @@ public class EemApiTestDataInitializer implements ApplicationListener<Applicatio
             .firstName("John")
             .lastName("Doe")
             .phone("555-1212")
+            .joinDate(LocalDateTime.now())
+            //            .joinDate(new Date())
             .build());
 
     employeeService.addEmployee(
@@ -42,6 +45,8 @@ public class EemApiTestDataInitializer implements ApplicationListener<Applicatio
             .firstName("Jenny")
             .lastName("Doe")
             .phone("867-5309")
+            .joinDate(LocalDateTime.now())
+            //            .joinDate(new Date())
             .build());
 
     employeeService.addEmployee(
@@ -51,6 +56,8 @@ public class EemApiTestDataInitializer implements ApplicationListener<Applicatio
             .firstName("Clark")
             .lastName("Kent")
             .phone("555-1213")
+            .joinDate(LocalDateTime.now())
+            //            .joinDate(new Date())
             .build());
   }
 }

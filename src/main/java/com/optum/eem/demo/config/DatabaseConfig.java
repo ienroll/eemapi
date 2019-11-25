@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
-@Configuration //Use this OR add it to EnableConfigurationProperties - to add this bean to app cxt
+@Configuration // Use this OR add it to EnableConfigurationProperties - to add this bean to app cxt
 @ConfigurationProperties(prefix = "database")
 @Data
 @NoArgsConstructor

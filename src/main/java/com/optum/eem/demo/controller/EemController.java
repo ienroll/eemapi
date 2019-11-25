@@ -13,7 +13,11 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,6 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 @RestController
 @Api(value = "eemapi")
+@RequestMapping(("/api/tutorial/"))
 @RequiredArgsConstructor
 public class EemController {
 
@@ -29,7 +34,7 @@ public class EemController {
   private final Tracer tracer;
 
   @ApiOperation(value = "Create Employee ", response = ResponseEntity.class)
-  @RequestMapping(value = "/api/tutorial/1.0/employees", method = RequestMethod.POST)
+  @PostMapping(value = "1.0/employees")
   public ResponseEntity createEmployee(@RequestBody Employee employee) {
 
     Span span = tracer.buildSpan("create employee").start();
@@ -48,7 +53,7 @@ public class EemController {
   }
 
   @ApiOperation(value = "Get Employee ", response = ResponseEntity.class)
-  @RequestMapping(value = "/api/tutorial/1.0/employees/{id}", method = RequestMethod.GET)
+  @GetMapping(value = "/1.0/employees/{id}")
   public ResponseEntity getEmployee(@PathVariable("id") String idString) {
 
     Employee employee = null;
@@ -75,7 +80,7 @@ public class EemController {
   }
 
   @ApiOperation(value = "Get All Employees ", response = ResponseEntity.class)
-  @RequestMapping(value = "/api/tutorial/1.0/employees", method = RequestMethod.GET)
+  @GetMapping(value = "/1.0/employees")
   public ResponseEntity getAllEmployees() {
 
     Span span = tracer.buildSpan("get employees").start();
@@ -88,7 +93,7 @@ public class EemController {
   }
 
   @ApiOperation(value = "Update Employee ", response = ResponseEntity.class)
-  @RequestMapping(value = "/api/tutorial/1.0/employees/{id}", method = RequestMethod.PUT)
+  @PutMapping(value = "/1.0/employees/{id}")
   public ResponseEntity updateEmployee(
       @PathVariable("id") String idString, @RequestBody Employee employee) {
 
@@ -112,7 +117,7 @@ public class EemController {
   }
 
   @ApiOperation(value = "Patch Employee ", response = ResponseEntity.class)
-  @RequestMapping(value = "/api/tutorial/1.0/employees/{id}", method = RequestMethod.PATCH)
+  @RequestMapping(value = "/1.0/employees/{id}", method = RequestMethod.PATCH)
   public ResponseEntity patchEmployee(
       @PathVariable("id") String idString, @RequestBody Employee employee) {
 
@@ -137,7 +142,7 @@ public class EemController {
   }
 
   @ApiOperation(value = "Delete Employee ", response = ResponseEntity.class)
-  @RequestMapping(value = "/api/tutorial/1.0/employees/{id}", method = RequestMethod.DELETE)
+  @DeleteMapping(value = "/1.0/employees/{id}")
   public ResponseEntity deleteEmployee(@PathVariable("id") String idString) {
 
     Span span = tracer.buildSpan("delete employee").start();

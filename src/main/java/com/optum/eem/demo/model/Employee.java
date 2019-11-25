@@ -1,7 +1,8 @@
 package com.optum.eem.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,5 +18,7 @@ public class Employee implements Serializable {
   private String lastName;
   private String email;
   private String phone;
-  private Date joinDate;
+
+  @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+  private LocalDateTime joinDate;
 }
