@@ -40,7 +40,7 @@ public class SwaggerConfig extends WebMvcConfigurationSupport {
                 new ResponseMessageBuilder()
                     .code(500)
                     .message("500 message")
-                    .responseModel(new ModelRef("Error"))
+                    .responseModel(new ModelRef("ApiError"))
                     .build(),
                 new ResponseMessageBuilder().code(403).message("Forbidden!").build()));
   }

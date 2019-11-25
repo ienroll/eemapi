@@ -1,6 +1,7 @@
 package com.optum.eem.demo.model;
 
 import java.io.Serializable;
+import java.util.Date;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,4 +17,5 @@ public class Employee implements Serializable {
   private String lastName;
   private String email;
   private String phone;
+  private Date joinDate;
 }
