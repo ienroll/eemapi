@@ -197,16 +197,18 @@ public class CustomRestEntityExceptionHandler extends ResponseEntityExceptionHan
     return new ResponseEntity<>(apiError, new HttpHeaders(), apiError.getStatus());
   }
 
-  // Commented below handleAll method and moved it GlobalEntityExceptionHandler to handle different kids of app exceptions!
+  // Commented below handleAll method and moved it GlobalEntityExceptionHandler to handle different
+  // kids of app exceptions!
 
   // 500
 
-//  @ExceptionHandler({Exception.class})
-//  public ResponseEntity<Object> handleAll(final Exception ex, final WebRequest request) {
-//    logger.info(ex.getClass().getName());
-//    logger.error("error", ex);
-//    final ApiError apiError =
-//        new ApiError(HttpStatus.INTERNAL_SERVER_ERROR, ex.getLocalizedMessage(), "error occurred");
-//    return new ResponseEntity<>(apiError, new HttpHeaders(), apiError.getStatus());
-//  }
+  //  @ExceptionHandler({Exception.class})
+  //  public ResponseEntity<Object> handleAll(final Exception ex, final WebRequest request) {
+  //    logger.info(ex.getClass().getName());
+  //    logger.error("error", ex);
+  //    final ApiError apiError =
+  //        new ApiError(HttpStatus.INTERNAL_SERVER_ERROR, ex.getLocalizedMessage(), "error
+  // occurred");
+  //    return new ResponseEntity<>(apiError, new HttpHeaders(), apiError.getStatus());
+  //  }
 }
