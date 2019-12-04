@@ -44,8 +44,8 @@ The webhook receiver allows configuring a generic receiver.
   {
     "version": "4",
     "groupKey": <string>,    // key identifying the group of alerts (e.g. to deduplicate)
-    "status": "<resolved|firing>",
     "receiver": <string>,
+    "status": "<resolved|firing>",
     "groupLabels": <object>,
     "commonLabels": <object>,
     "commonAnnotations": <object>,
