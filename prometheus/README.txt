@@ -1,3 +1,6 @@
+##
+Find localhost IP address and add it to /etc/hosts file. Also, update the prometheus.yaml file with that IP address!
+
 ### Run Prometheus via Docker - Refer: https://stackabuse.com/monitoring-spring-boot-apps-with-micrometer-prometheus-and-grafana/
 
 ```
