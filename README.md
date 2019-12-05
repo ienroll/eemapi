@@ -29,6 +29,12 @@
       --user 'user':'password'
 
 
+## Swagger-UI
+http://localhost:8080/swagger-ui.html
+  
+## Application REST endpoints:
+http://localhost:8080/api/tutorial/1.0/employees
+
 ##Actuator/Metrics:
 http://localhost:8080/actuator
 
@@ -44,9 +50,5 @@ http://localhost:16686/
 ##Alertmanager
 http://localhost:9093
 
-## Swagger-UI
-http://localhost:8080/swagger-ui.html
-  
-## Application REST endpoints:
-http://localhost:8080/api/tutorial/1.0/employees
+
 
