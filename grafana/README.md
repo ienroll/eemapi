@@ -2,4 +2,6 @@
 
 ```
 docker run -d --name grafana -p 3000:3000 grafana/grafana
+  docker-compose -f grafana/docker-compose.yaml up -d
+
 ```

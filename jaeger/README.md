@@ -5,6 +5,9 @@
 ```
 docker run -d --name jaeger -p 16686:16686 -p 6831:6831/udp jaegertracing/all-in-one
 OR docker run --rm -it --network=host jaegertracing/all-in-one
+
+  docker-compose -f jaeger/docker-compose.yaml up -d
+
 ```
 
 ### Jaeger vs Zipkin - https://sematext.com/blog/jaeger-vs-zipkin-opentracing-distributed-tracers/

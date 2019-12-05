@@ -9,4 +9,3 @@ receivers:
     webhook_configs:
       - url: "http://localhost:9877/webhook"
         send_resolved: true
-        http_config: global.http_config
