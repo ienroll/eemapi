@@ -30,13 +30,13 @@
 
 
 ## Swagger-UI
-http://localhost:8080/swagger-ui.html
+http://localhost:9000/swagger-ui.html
   
 ## Application REST endpoints:
-http://localhost:8080/api/tutorial/1.0/employees
+http://localhost:9000/api/tutorial/1.0/employees
 
 ##Actuator/Metrics:
-http://localhost:8080/actuator
+http://localhost:9000/actuator
 
 ##Prometheus:
 http://localhost:9090/
