@@ -1,0 +1,8 @@
+version: '3'
+services:
+  eemapi:
+    build: .
+    container_name: eemapi
+    image: eemapi
+    ports:
+      - "9000:9000"
