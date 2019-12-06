@@ -1,7 +1,14 @@
 groups:
-- name: eemapialerts
+- name: EemApiAlertsGroup
   rules:
   # Alert for any instance that is unreachable for >5 seconds.
   - alert: InstanceDown
     expr: up == 0
     for: 5s
+    labels:
+      severity: "high"
+    annotations:
+      summary: "Eem Api instance went down"
+      description: "Whatever"
+      urgency: 1
+      assignment_group: "Test_EEM_API"

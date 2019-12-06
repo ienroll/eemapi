@@ -1,11 +1,11 @@
 ##Installation
-  Install following Docker images. 
+
+ ## Update prometheus.yaml asnd alerts.yaml with host IP Address:
+  Run ifconfig | grep inet
+  Copy the IP Address and update the files prometheus.yaml and alerts.yaml
    
-  ./prometheus
-  ./grafana
-  ./jaeger
-  ./node-exporter
-  ./alertmanager
+  Install prometheus, node-exporter, jaeger, grafana, alertmanager images using the following command:
+   ./install.sh
 
   To integrate Dockerized apps refer to - install.pdf(https://stackabuse.com/monitoring-spring-boot-apps-with-micrometer-prometheus-and-grafana/)
 
