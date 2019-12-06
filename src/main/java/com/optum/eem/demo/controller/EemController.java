@@ -3,6 +3,7 @@ package com.optum.eem.demo.controller;
 import com.google.common.collect.ImmutableMap;
 import com.optum.eem.demo.model.Employee;
 import com.optum.eem.demo.service.EmployeeService;
+import io.micrometer.core.annotation.Timed;
 import io.opentracing.Span;
 import io.opentracing.Tracer;
 import io.swagger.annotations.Api;
@@ -25,8 +26,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
-@RestController
 @Api(value = "eemapi")
+@Timed
+@RestController
 @RequestMapping(("/api/tutorial/"))
 @RequiredArgsConstructor
 public class EemController {
