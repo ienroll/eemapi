@@ -1,11 +1,18 @@
+# Refer: https://prometheus.io/docs/alerting/configuration/#%3Cwebhook_config%3E
+# Example: https://github.com/prometheus/alertmanager/blob/master/examples/ha/alertmanager.yml
+# alert: https://github.com/prometheus/alertmanager/blob/master/examples/ha/send_alerts.sh
 global:
-  resolve_timeout: 5m
+  resolve_timeout: 1m
 
 route:
   receiver: 'servicenow-receiver-1'
+  group_by: [alertname]
+  group_wait: 10s
+  group_interval: 10s
+  repeat_interval: 1h
 
 receivers:
   - name: 'servicenow-receiver-1'
     webhook_configs:
-      - url: "http://10.83.173.61:9877/webhook"
+      - url: "http://${HOST_IP}/webhook"
         send_resolved: true
