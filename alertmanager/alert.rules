@@ -1,12 +1,14 @@
+# Refer: https://godoc.org/github.com/prometheus/alertmanager/template#Data
+# Examples: https://awesome-prometheus-alerts.grep.to/rules.html
 groups:
 - name: EemApiAlertsGroup
   rules:
   # Alert for any instance that is unreachable for >5 seconds.
-  - alert: InstanceDown
+  - alert: EemApiInstanceDown
     expr: up == 0
     for: 5s
     labels:
-      severity: "high"
+      severity: high
     annotations:
       summary: "Eem Api instance went down"
       description: "Whatever"
