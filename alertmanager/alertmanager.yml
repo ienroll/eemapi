@@ -14,5 +14,5 @@ route:
 receivers:
   - name: 'servicenow-receiver-1'
     webhook_configs:
-      - url: "http://{{HOST_IP}}/webhook"
+      - url: "http://{{HOST_IP}}:9877/webhook"
         send_resolved: true
